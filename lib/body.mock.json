@@ -1,0 +1,40 @@
+{
+  "deduplicationId":"dd712704-aead-44eb-badf-7207680ee14d",
+  "time":"2024-11-25T23:24:13.503+00:00",
+  "deviceInfo":{
+    "tenantId":"52f14cd4-c6f1-4fbd-8f87-4025e1d49242",
+    "tenantName":"ChirpStack",
+    "applicationId":"b7125518-3311-4564-856a-c7ea5b196e96",
+    "applicationName":"rriv-simulated",
+    "deviceProfileId":"119f0385-d136-4cfa-bf28-ec62d380d21b",
+    "deviceProfileName":"rriv-simulated",
+    "deviceName":"87fa6deaaa753d17 simulated",
+    "devEui":"87fa6deaaa753d17",
+    "deviceClassEnabled":"CLASS_A",
+    "tags":{}
+  },
+  "devAddr":"01477647",
+  "adr":true,
+  "dr":3,
+  "fCnt":5292,
+  "fPort":1,
+  "confirmed":true,
+  "data":"aGVsbG8=",
+  "rxInfo":[
+    {
+      "gatewayId":"a569605990419aee",
+      "uplinkId":3571,
+      "gwTime":"2024-11-25T23:24:13+00:00",
+      "nsTime":"2024-11-25T23:24:13.499581137+00:00",
+      "timeSinceGpsEpoch":"1416612271.503s",
+      "rssi":-60,
+      "snr":7,
+      "channel":56,
+      "location":{},
+      "context":"Z0UHHQ==",
+      "metadata": "xxx",
+      "crcStatus":"CRC_OK"
+    }
+  ],
+  "txInfo":{ "frequency":913500000, "modulation":{ "lora": "xxx" } }
+}
