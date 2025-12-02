@@ -163,13 +163,7 @@ spec:
   selector:
     app: timescale-bridge
   ports:
-    - port: 30001          # The port that the service will expose
+    - port: 80          # The port that the service will expose
       targetPort: 80    # The port on the container
-      nodePort: 30001    # Optional: specify a NodePort (between 30000-32767)
-  type: NodePort
-      #  ports:
-      #    - protocol: TCP
-      #      port: 30001           # The port on which the service will be exposed
-      #      targetPort: 80      
-      #  type: ClusterIP           # Exposes the service only within the cluster (default behavior)
+  type: ClusterIP           # Exposes the service only within the cluster (default behavior)
 
