@@ -7,5 +7,6 @@ CREATE TABLE events (
     eui TEXT NOT NULL,
     time TIMESTAMPTZ NOT NULL
 );
+ALTER TABLE events ADD COLUMN values TEXT;
 
 SELECT create_hypertable('events', by_range('time'));
