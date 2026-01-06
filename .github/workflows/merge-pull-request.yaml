@@ -28,6 +28,9 @@ jobs:
       - name: Install Semantic Release
         run: npm i -g semantic-release @semantic-release/{git,exec,changelog}
 
+      - name: Install Semantic-Release-Export Plugin
+        run: npm install --save-dev semantic-release-export-data
+
       - name: Run Semantic Release
         run: semantic-release
         id: next-version
