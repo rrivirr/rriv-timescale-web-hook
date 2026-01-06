@@ -33,8 +33,8 @@ jobs:
       - name: Run Semantic Release
         run: semantic-release
         id: next-version
-        env:
-          GITHUB_TOKEN: ${{ secrets.RRIV_GH_TOKEN }}
+          #        env:
+          #GITHUB_TOKEN: ${{ secrets.RRIV_GH_TOKEN }}
 
   build:
     name: Build
