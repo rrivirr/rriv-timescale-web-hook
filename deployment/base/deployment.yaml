@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: timescale-bridge
+  name: chirpstack-webhook
   labels:
-    app: timescale-bridge
+    app: chirpstack-webhook
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: timescale-bridge
+      app: chirpstack-webhook
   template:
     metadata:
       labels:
-        app: timescale-bridge
+        app: chirpstack-webhook
       annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/role: "webapp"
@@ -27,7 +27,7 @@ spec:
       imagePullSecrets:
         - name: registry-rriv
       containers:
-        - name: timescale-bridge
+        - name: chirpstack-webhook
           command: ["/bin/sh", "-c"]
           args:
             - |
@@ -47,6 +47,6 @@ spec:
               echo "starting service"
               #while :; do echo 'Hit CTRL+C'; sleep 1; done # go forever
               npm start
-          image: registry.digitalocean.com/rriv/timescale-bridge:latest
+          image: registry.digitalocean.com/rriv/chirpstack-webhook:latest
           ports:
             - containerPort: 3006

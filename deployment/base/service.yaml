@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: timescale-bridge
+  name: chirpstack-webhook
 spec:
   selector:
-    app: timescale-bridge
+    app: chirpstack-webhook
   ports:
     - name: http
       protocol: TCP

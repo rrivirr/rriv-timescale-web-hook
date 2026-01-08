@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: timescale-bridge
+  name: chirpstack-webhook
 spec:
   template:
     metadata:
@@ -13,4 +13,4 @@ spec:
           {{ end }}
     spec:
       containers:
-        - name: timescale-bridge
+        - name: chirpstack-webhook
