@@ -47,6 +47,6 @@ spec:
               echo "starting service"
               #while :; do echo 'Hit CTRL+C'; sleep 1; done # go forever
               npm start
-          image: registry.digitalocean.com/rriv/timescale-bridge:latest
+          image: registry.digitalocean.com/rriv/chirpstack-webhook:latest
           ports:
             - containerPort: 3006
