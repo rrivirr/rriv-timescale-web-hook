@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/rrivirr/rriv-timescale-web-hook/compare/v1.1.0...v1.2.0) (2026-01-08)
+
+
+### Features
+
+* use updated byte layout ([74f9a98](https://github.com/rrivirr/rriv-timescale-web-hook/commit/74f9a98f9f7a1cb9772bdf9168f8a18835f8febb))
+
 # [1.1.0](https://github.com/rrivirr/rriv-timescale-web-hook/compare/v1.0.4...v1.1.0) (2026-01-08)
 
 
