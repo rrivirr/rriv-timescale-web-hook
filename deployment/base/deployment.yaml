@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: timescale-bridge
+  name: chirpstack-webhook
   namespace: default
   labels:
-    app: timescale-bridge
+    app: chirpstack-webhook
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: timescale-bridge
+      app: chirpstack-webhook
   template:
     metadata:
       labels:
-        app: timescale-bridge
+        app: chirpstack-webhook
       annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/role: "webapp"
         vault.hashicorp.com/auth-path: "auth/kubernetes-rriv"
-        vault.hashicorp.com/agent-inject-secret-credentials.txt: "secret/data/dev-timescale-creds"
+        vault.hashicorp.com/agent-inject-secret-credentials.txt: "secret/data/timescale-creds"
         vault.hashicorp.com/agent-inject-template-credentials: |
-          {{- with secret "secret/data/dev-timescale-creds" }}
+          {{- with secret "secret/data/timescale-creds" }}
           export DATABASE_URL="{{ .Data.data.database_url }}"
           {{- end }}
     spec:
@@ -28,7 +28,7 @@ spec:
       imagePullSecrets:
         - name: registry-rriv
       containers:
-        - name: timescale-bridge
+        - name: chirpstack-webhook
           command: ["/bin/sh", "-c"]
           args:
             - |

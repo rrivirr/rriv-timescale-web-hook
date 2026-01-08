@@ -5,5 +5,5 @@ resources:
 patches:
   - path: deployment.yaml
 images:
-  - name: registry.digitalocean.com/rriv/timescale-bridge
-    newTag: v1.7.8
+  - name: registry.digitalocean.com/rriv/chirpstack-webhook
+    newTag: 1.0.3
