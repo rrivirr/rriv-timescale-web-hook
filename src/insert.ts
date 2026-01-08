@@ -21,15 +21,17 @@ export const insert = async (body: any) => {
     console.log("time", time, "devEui", devEui, "data", data);
 
     const dataDecoded = Buffer.from(data, "base64");
+    let length = dataDecoded.length;
     let values: { [key: string]: any } = {};
     // decode from naive codec
     const timestamp = dataDecoded.readBigUInt64BE(0);
+    length = length - 8; // remove the length portion from the timestamp
 
     values["timestamp"] = new BigIntWrapper(timestamp);
 
     let j = 1;
-    for (let i = 8; i < 20; i = i + 4) {
-      const value = dataDecoded.readInt32BE(i) / 100;
+    for (let i = 0; i < length; i = i + 2) {
+      const value = dataDecoded.readInt16BE(i) / 100;
       values["value_" + j] = value;
       j = j + 1;
     }
