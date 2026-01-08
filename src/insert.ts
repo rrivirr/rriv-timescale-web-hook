@@ -1,4 +1,5 @@
 import pg from "pg";
+import mqtt from "mqtt";
 
 class BigIntWrapper {
   private value: bigint;
@@ -41,15 +42,25 @@ export const insert = async (body: any) => {
     const client = new pg.Client(process.env.DATABASE_URL);
 
     await client.connect();
-    await client.query(
-      `
+    try {
+      await client.query("BEGIN");
+      await client.query(
+        `
         INSERT INTO events
           ( time, eui, data, values )
         VALUES
           ( $1, $2, $3, $4 )
         `,
-      [time, devEui, data, json]
-    );
+        [time, devEui, data, json]
+      );
+      const mqttClient = await mqtt.connectAsync(process.env.MQTT_URL!);
+      await mqttClient.publishAsync(`/data/raw/${devEui}`, json);
+      await client.query("COMMIT");
+    } catch (e) {
+      await client.query("ROLLBACK");
+      throw e;
+    }
+
     await client.end();
   } catch (e) {
     console.log("body", body);

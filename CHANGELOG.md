@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/rrivirr/rriv-timescale-web-hook/compare/v1.0.4...v1.1.0) (2026-01-08)
+
+
+### Features
+
+* publish mqtt ([6c97a45](https://github.com/rrivirr/rriv-timescale-web-hook/commit/6c97a45d6b661b4d2cdee7ab5c961ea12fb179a1))
+
 ## [1.0.4](https://github.com/rrivirr/rriv-timescale-web-hook/compare/v1.0.3...v1.0.4) (2026-01-08)
 
 
