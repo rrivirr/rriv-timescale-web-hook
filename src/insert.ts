@@ -53,9 +53,13 @@ export const insert = async (body: any) => {
         `,
         [time, devEui, data, json]
       );
-      const mqttClient = await mqtt.connectAsync(process.env.MQTT_URL!);
-      await mqttClient.publishAsync(`/data/raw/${devEui}`, json);
       await client.query("COMMIT");
+
+      console.log(process.env.MQTT_URL);
+      const mqttClient = await mqtt.connectAsync(process.env.MQTT_URL!);
+      console.log("connected");
+      await mqttClient.publishAsync(`/data/raw/${devEui}`, json);
+      console.log("published");
     } catch (e) {
       await client.query("ROLLBACK");
       throw e;
