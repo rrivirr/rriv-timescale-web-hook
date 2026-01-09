@@ -6,4 +6,4 @@ patches:
 - path: deployment.yaml
 images:
 - name: registry.digitalocean.com/rriv/chirpstack-webhook
-  newTag: v2.0.1
+  newTag: v2.0.3

@@ -32,12 +32,14 @@ export const insert = async (body: any) => {
 
     let j = 1;
     for (let i = 0; i < length; i = i + 2) {
-      const value = dataDecoded.readInt16BE(i) / 100;
+      console.log(dataDecoded.readInt16BE(i+8));
+      const value = dataDecoded.readInt16BE(i+8) / 100;
       values["value_" + j] = value;
       j = j + 1;
     }
 
     const json = JSON.stringify(values);
+    console.log(json);
 
     const client = new pg.Client(process.env.DATABASE_URL);
 
