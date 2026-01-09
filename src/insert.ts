@@ -1,5 +1,5 @@
 import pg from "pg";
-import mqtt from "mqtt";
+import type { Mqtt } from "./mqtt.js";
 
 class BigIntWrapper {
   private value: bigint;
@@ -11,7 +11,7 @@ class BigIntWrapper {
   }
 }
 
-export const insert = async (body: any) => {
+export const insert = async (body: any, mqtt: Mqtt) => {
   try {
     const {
       time,
@@ -55,17 +55,15 @@ export const insert = async (body: any) => {
         `,
         [time, devEui, data, json]
       );
+
       await client.query("COMMIT");
 
-      console.log(process.env.MQTT_URL);
-      const mqttClient = await mqtt.connectAsync(process.env.MQTT_URL!);
-      console.log("connected");
-      await mqttClient.publishAsync(`/data/raw/${devEui}`, json);
-      console.log("published");
     } catch (e) {
       await client.query("ROLLBACK");
       throw e;
     }
+
+    await mqtt.publish(`/data/raw/${devEui}`, json);
 
     await client.end();
   } catch (e) {
