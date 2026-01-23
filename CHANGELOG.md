@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/rrivirr/rriv-timescale-web-hook/compare/v1.2.2...v1.2.3) (2026-01-23)
+
+
+### Bug Fixes
+
+* disconnect on exception ([7b12cab](https://github.com/rrivirr/rriv-timescale-web-hook/commit/7b12cab9bf3fc11785d3f3f6930c5ec32d289b79))
+
 ## [1.2.2](https://github.com/rrivirr/rriv-timescale-web-hook/compare/v1.2.1...v1.2.2) (2026-01-09)
 
 
