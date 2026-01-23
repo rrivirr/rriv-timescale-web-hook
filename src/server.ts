@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
-import { insert } from "./insert.js";
-import { Mqtt } from "./mqtt.js";
+import { insert } from "./insert.ts";
+import { Mqtt } from "./mqtt.ts";
 
 const app = express();
 app.use(express.json());
@@ -9,7 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 const mqtt = new Mqtt();
 
 const startServer = async () => {
-  await mqtt.connect();
+  try {
+    await mqtt.connect();
+  } catch (error) {
+    console.log("MQTT CONNECTION FAILED");
+    console.log(error);
+  }
 
   // Start the server
   app.listen(process.env.NODE_PORT || 3006, () => {

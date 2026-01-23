@@ -1,5 +1,5 @@
-import pg from "pg";
-import type { Mqtt } from "./mqtt.js";
+import knex from "./knex.ts";
+import type { Mqtt } from "./mqtt.ts";
 
 class BigIntWrapper {
   private value: bigint;
@@ -39,28 +39,18 @@ export const insert = async (body: any, mqtt: Mqtt) => {
 
     const json = JSON.stringify(values);
 
-    const client = new pg.Client(process.env.DATABASE_URL);
-
-    await client.connect();
-    try {
-      await client.query("BEGIN");
-      await client.query(
+    await knex.transaction(async (trx) => {
+      await trx.raw(
         `
         INSERT INTO events
           ( time, eui, data, values )
         VALUES
-          ( $1, $2, $3, $4 )
+          ( ?, ?, ?, ? )
         `,
-        [time, devEui, data, json]
+        [time, devEui, data, json],
       );
       await mqtt.publish(`/data/raw/${devEui}`, json);
-      await client.query("COMMIT");
-    } catch (e) {
-      await client.query("ROLLBACK");
-      throw e;
-    }
-
-    await client.end();
+    });
   } catch (e) {
     console.log("body", body);
     throw e;
