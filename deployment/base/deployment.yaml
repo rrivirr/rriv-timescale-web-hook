@@ -51,3 +51,6 @@ spec:
           image: registry.digitalocean.com/rriv/chirpstack-webhook:latest
           ports:
             - containerPort: 3006
+          env:
+            - name: MQTT_URL
+              value: mqtt://mqtt-broker-mosquitto
