@@ -60,6 +60,7 @@ export const insert = async (body: any, mqtt: Mqtt) => {
 
     } catch (e) {
       await client.query("ROLLBACK");
+      await client.end();
       throw e;
     }
 
