@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/rrivirr/rriv-timescale-web-hook/compare/v1.2.3...v1.2.4) (2026-11-11)
+
+
+### Bug Fixes
+
+* update vault role ([411adc4](https://github.com/rrivirr/rriv-timescale-web-hook/commit/411adc4cc0c7070bbed313ab5a63b3a2f2081c8a))
+
 ## [1.2.3](https://github.com/rrivirr/rriv-timescale-web-hook/compare/v1.2.2...v1.2.3) (2026-01-23)
 
 
