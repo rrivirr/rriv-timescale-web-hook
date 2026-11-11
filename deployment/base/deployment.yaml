@@ -16,7 +16,7 @@ spec:
         app: chirpstack-webhook
       annotations:
         vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/role: "webapp"
+        vault.hashicorp.com/role: "timescale"
         vault.hashicorp.com/auth-path: "auth/kubernetes-rriv"
         vault.hashicorp.com/agent-inject-secret-credentials.txt: "secret/data/timescale-creds"
         vault.hashicorp.com/agent-inject-template-credentials: |
